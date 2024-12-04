@@ -1,7 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
-
+// Test GIt
 public class FlashCard { //getting question and answer from user input
     String question;
     String answer;
