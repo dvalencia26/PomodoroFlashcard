@@ -1,7 +1,7 @@
 import java.time.Clock;
 
 public abstract class PomodoroState {
-    protected PomodoroApp pomodoroApp;
+    protected PomodoroApp pomodoroApp;// instance of pomodoro App
 
     public PomodoroState(PomodoroApp pomodoroApp) {
         this.pomodoroApp = pomodoroApp;
