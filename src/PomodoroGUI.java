@@ -106,7 +106,6 @@ public class PomodoroGUI {
         */
     }
     public static void main(String[] args) {
-        CountDownTimer timer1 = new CountDownTimer();
         PomodoroApp pomodoroApp1 = new PomodoroApp( 25,15);
         new PomodoroGUI(pomodoroApp1);
 

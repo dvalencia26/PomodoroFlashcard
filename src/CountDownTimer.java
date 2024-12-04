@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 import javax.swing.Timer;
@@ -12,7 +13,7 @@ public class CountDownTimer {
     //private int pomodorosCompleted;
     private PomodoroState currentState;
     private boolean isRunning;
-    private List<Observer> observers; //Notify user about changes
+    private List<Observer> observers = new ArrayList<>(); //Notify user about changes
 
     public CountDownTimer() {
     }
@@ -25,6 +26,7 @@ public class CountDownTimer {
             public void actionPerformed(ActionEvent e) {
                 if (seconds > 0){
                     seconds--;
+
                 }else {
                     pauseTimer();
                 }
@@ -61,4 +63,5 @@ public class CountDownTimer {
         this.pomodorosCompleted = sessionsCompleted;
     }
     */
+
 }
