@@ -1,17 +1,23 @@
 package View;
 
+import Model.FlashCard;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class CreateFlashcardDisplay {
-    private JLabel Question;
+    private JLabel questionLabel;
     private JTextField questionInput;
-    private JLabel Answer;
+    private JLabel answerLabel;
     private JTextField answerInput;
+    private JLabel status;
     private JButton nextCard;
     private JButton saveSet;
+    private ArrayList<FlashCard> flashCards;
+    private int currentIndex;
     public CreateFlashcardDisplay(){
         //Basic settings
         JPanel panel2 = new JPanel(); //Creating Panel
@@ -25,13 +31,13 @@ public class CreateFlashcardDisplay {
         panel2.setBackground(Color.PINK); //panel color
         panel2.setLayout(null);// look into this
 
-        Question = new JLabel("Question:");
-        Question.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        Question.setForeground(Color.WHITE); // Font text color
-        Question.setBackground(Color.PINK); //Font background color
-        Question.setOpaque(true); // setting color
-        Question.setBounds(60, 50, 100, 20); //placing of title
-        panel2.add(Question); //adding to panel
+        questionLabel = new JLabel("Question:");
+        questionLabel.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+        questionLabel.setForeground(Color.WHITE); // Font text color
+        questionLabel.setBackground(Color.PINK); //Font background color
+        questionLabel.setOpaque(true); // setting color
+        questionLabel.setBounds(60, 50, 100, 20); //placing of title
+        panel2.add(questionLabel); //adding to panel
 
         questionInput = new JTextField(); // size of text area
         questionInput.setBackground(Color.white);
@@ -40,13 +46,13 @@ public class CreateFlashcardDisplay {
         panel2.add(questionInput);
 
 
-        Answer = new JLabel("Answer:");
-        Answer.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        Answer.setForeground(Color.WHITE); // Font text color
-        Answer.setBackground(Color.PINK); //Font background color
-        Answer.setOpaque(true); // setting color
-        Answer.setBounds(60, 270, 100, 20); //placing of title
-        panel2.add(Answer); //adding to panel
+        answerLabel = new JLabel("Answer:");
+        answerLabel.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+        answerLabel.setForeground(Color.WHITE); // Font text color
+        answerLabel.setBackground(Color.PINK); //Font background color
+        answerLabel.setOpaque(true); // setting color
+        answerLabel.setBounds(60, 270, 100, 20); //placing of title
+        panel2.add(answerLabel); //adding to panel
 
         answerInput = new JTextField(); // size of text area
         answerInput.setFont(new Font("TimesRoman", Font.PLAIN, 12));
@@ -75,12 +81,27 @@ public class CreateFlashcardDisplay {
         });
         panel2.add(saveSet);
 
-        //
+        status = new JLabel(" ", JLabel.CENTER);
+        panel2.add(status, BorderLayout.NORTH);
 
 
 
         frame2.setVisible(true);
     }
     //add method
+    public void addFlashcard(){
+        String question = questionInput.getText();
+        String answer = answerInput.getText();
+
+        if (question.isEmpty() || answer.isEmpty()){
+            status.setText("Enter question and answer.");
+        }else {
+            FlashCard flashcard = new FlashCard(question, answer);
+            flashCards.add(flashcard);
+            status.setText("Flashcard successfully added");
+            questionInput.setText(" ");
+            answerInput.setText(" ");
+        }
+    }
     //show answer
 }

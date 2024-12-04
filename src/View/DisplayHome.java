@@ -13,8 +13,6 @@ public class DisplayHome {
     private JButton CreateDeckButton;
     private JButton ReviewDeckButton;
 
-    private ArrayList<FlashCard> flashCards;
-    private int currentIndex;
     public DisplayHome() {
         //Basic settings
         JPanel panel = new JPanel(); //Creating Panel
