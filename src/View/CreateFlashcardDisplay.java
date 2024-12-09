@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 // Test ProjectMain
-public class CreateFlashcardDisplay extends Panel{
+public class CreateFlashcardDisplay extends JPanel{
     private JLabel questionLabel;
     private JLabel answerLabel;
     private JTextField questionInput;
@@ -37,16 +37,21 @@ public class CreateFlashcardDisplay extends Panel{
         add(answerInput);
 
 
+        JPanel buttonPanel = new JPanel(new FlowLayout());
         JButton saveButton  = new JButton("Save Card");
         saveButton.setBounds(150, 150, 120, 30);
-        add(saveButton);
+        buttonPanel.add(saveButton);
         JButton homeButton  = new JButton("Return Home");
+        buttonPanel.add(homeButton);
 
         saveButton.addActionListener(e -> saveFlashcard());
         homeButton.addActionListener(e -> cardLayout.show(container, "Home"));
 
+        add(buttonPanel, BorderLayout.SOUTH);
         status = new JLabel(" ", SwingConstants.CENTER); // unsure about this
         add(status, BorderLayout.NORTH);
+
+
     }
 
     private void saveFlashcard(){

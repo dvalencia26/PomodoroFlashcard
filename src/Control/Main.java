@@ -9,12 +9,13 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args){
-        JFrame frame = new JFrame("Pomodoro Flashcard");
-        frame.setSize(600, 800);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
+//        JFrame frame = new JFrame("Pomodoro Flashcard");
+//        frame.setSize(600, 800);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setLocationRelativeTo(null);
 
-        new DisplayHome();
+        DisplayHome displayHome = new DisplayHome();
+        displayHome.setVisible(true);
 
 //        CardLayout cardLayout = new CardLayout();
 //        JPanel container = new JPanel(cardLayout);
@@ -28,7 +29,7 @@ public class Main {
 //        container.add(displayCards, "DisplayCards");
 
 //        frame.add(container);
-        frame.setVisible(true);
+//        frame.setVisible(true);
 
 //        //new DisplayHome();
 //        //new DisplayCards();

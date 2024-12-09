@@ -7,45 +7,64 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class DisplayHome extends JFrame{
-    private JLabel title;
-    private JButton createDeckButton;
-    private JButton reviewDeckButton;
-    private JButton pomodoroButton;
+//    private JLabel title;
+//    private JButton createDeckButton;
+//    private JButton reviewDeckButton;
+//    private JButton pomodoroButton;
+    private CardLayout cardLayout;
+    private JPanel container;
+
+    private HomePanel homePanel;
+    private CreateFlashcardDisplay createPanel;
+    private DisplayCards displayPanel;
+
 
     public DisplayHome(){
+        setTitle("Pomodoro Flashcard");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400,300);
+        setLocationRelativeTo(null);
 
-        CardLayout cardLayout = new CardLayout();
-        JPanel container = new JPanel(cardLayout);
+        cardLayout = new CardLayout();
+        container = new JPanel(cardLayout);
 
-        CreateFlashcardDisplay createFlashcardDisplay = new CreateFlashcardDisplay(container, cardLayout);
-        DisplayCards displayCards = new DisplayCards(container, cardLayout);
+        homePanel = new HomePanel(container, cardLayout);
+        createPanel= new CreateFlashcardDisplay(container, cardLayout);
+        displayPanel = new DisplayCards(container, cardLayout);
 
-        setLayout(null);
 
+        container.add(homePanel,"Home");
+        container.add(createPanel, "Create Deck");
+        container.add(displayPanel, "Display Cards");
 
-        title = new JLabel("Pomodoro Flashcards", JLabel.CENTER);
-        title.setFont(new Font("TimesRoman", Font.BOLD, 40));
-        title.setBounds(50, 50, 500, 50);
-        add(title);
-
-        createDeckButton = new JButton("Create Deck");
-        createDeckButton.setBounds(200, 150, 200, 50);
-        add(createDeckButton);
-
-        reviewDeckButton = new JButton("Create Deck");
-        reviewDeckButton.setBounds(200, 220, 200, 50);
-        add(reviewDeckButton);
-
-        pomodoroButton = new JButton("Create Deck");
-        pomodoroButton.setBounds(200, 290, 200, 50);
-        add(pomodoroButton);
-
-        createDeckButton.addActionListener((ActionEvent e)-> cardLayout.show(container, "Create Flashcard"));
-        reviewDeckButton.addActionListener((ActionEvent e)-> cardLayout.show (container, "Display Cards"));
-
-        container.add(createFlashcardDisplay, "CreateFlashcard");
-        container.add(displayCards, "DisplayCards");
         add(container);
+
+        setVisible(true);
+
+
+//        title = new JLabel("Pomodoro Flashcards", JLabel.CENTER);
+//        title.setFont(new Font("TimesRoman", Font.BOLD, 40));
+//        title.setBounds(50, 50, 500, 50);
+//        add(title);
+//
+//        createDeckButton = new JButton("Create Deck");
+//        createDeckButton.setBounds(200, 150, 200, 50);
+//        add(createDeckButton);
+//
+//        reviewDeckButton = new JButton("Create Deck");
+//        reviewDeckButton.setBounds(200, 220, 200, 50);
+//        add(reviewDeckButton);
+//
+//        pomodoroButton = new JButton("Create Deck");
+//        pomodoroButton.setBounds(200, 290, 200, 50);
+//        add(pomodoroButton);
+//
+//        createDeckButton.addActionListener((ActionEvent e)-> cardLayout.show(container, "Create Flashcard"));
+//        reviewDeckButton.addActionListener((ActionEvent e)-> cardLayout.show (container, "Display Cards"));
+//
+//        container.add(createFlashcardDisplay, "CreateFlashcard");
+//        container.add(displayCards, "DisplayCards");
+//        add(container);
 
     }
 //    private JLabel Title;
