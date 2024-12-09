@@ -1,3 +1,4 @@
+/*
 public class DisplayTimer implements Observer {
     @Override
     public void update(int currentTime) {
@@ -6,3 +7,4 @@ public class DisplayTimer implements Observer {
         System.out.println("Time Remaining: " + String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
     }
 }
+ */
