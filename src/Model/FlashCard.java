@@ -1,22 +1,19 @@
 package Model;
 
-import java.util.ArrayList;
-
-public class FlashCard { //getting question and answer from user input
-    String question;
-    String answer;
+public class FlashCard {
+    private String question;
+    private String answer;
 
     public FlashCard(String question, String answer){
-        this.question= question;
+        this.question = question;
         this.answer = answer;
     }
 
-    public String getQuestion() {
+    public String getQuestion(){
         return question;
     }
 
-    public String getAnswer() {
+    public String getAnswer(){
         return answer;
     }
-
 }
