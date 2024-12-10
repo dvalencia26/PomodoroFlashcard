@@ -3,6 +3,14 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * PomodoroApp has an instance of the Pomodoro state (work, short break, long break),
+ * It manages transitions between states, and keeps track of pomodoros completed
+ * It notifies observers (GUI Panels) when the timer or state changes.
+ *
+ * author: Domenica
+ */
+
 public class PomodoroApp implements Subject{
     private CountDownTimer timer ; // Manages TimerCountDown logic
     private PomodoroState currentState; // Keeps a reference of the current state

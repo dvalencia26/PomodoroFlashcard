@@ -5,10 +5,15 @@ import javax.swing.*;
 import java.awt.*;
 
 /*
+sources:
 https://www.youtube.com/watch?v=ocb3x0TeoUw
+*/
+/**
 CardLayoutDemo is the JFrame that switches between the different GUIs (work, break, longBreak)
 It implements the Observer pattern, and uses an instance of PomodoroApp to display the correct GUI panel
 based on the session current state.
+
+ author: Domenica
  */
 
 public class CardLayoutDemo extends JFrame implements Observer {
@@ -50,7 +55,6 @@ public class CardLayoutDemo extends JFrame implements Observer {
         longBreakPanelGUI.setBackground(Color.PINK);
 
 
-        update(pomodoroApp.getTimer().getSeconds()); //Initial Update
         setVisible(true);
 
     }

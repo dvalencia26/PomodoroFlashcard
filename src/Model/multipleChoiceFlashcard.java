@@ -1,4 +1,4 @@
-package Model;
+/*package Model;
 
 public class multipleChoiceFlashcard extends sessionTemplate{
     @Override
@@ -31,3 +31,5 @@ public class multipleChoiceFlashcard extends sessionTemplate{
 
     }
 }
+
+ */

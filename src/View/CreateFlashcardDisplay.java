@@ -1,107 +1,87 @@
-package View;
+package View;//create 5 cards max
 
-import Model.FlashCard;
+import Model.FlashcardModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-public class CreateFlashcardDisplay {
+/**
+ * A panel that allows the user to create new flashcards by entering a question and answer.
+ * Single Responsibility: This class is only responsible for UI related to creating flashcards.
+ *
+ * Author: Isveydi
+ */
+public class CreateFlashcardDisplay extends JPanel{
     private JLabel questionLabel;
-    private JTextField questionInput;
     private JLabel answerLabel;
+    private JTextField questionInput;
     private JTextField answerInput;
     private JLabel status;
-    private JButton nextCard;
-    private JButton saveSet;
-    private ArrayList<FlashCard> flashCards;
-    private int currentIndex;
-    public CreateFlashcardDisplay(){
-        //Basic settings
-        JPanel panel2 = new JPanel(); //Creating Panel
-
-        JFrame frame2 = new JFrame();
-        frame2.setSize(800, 600);//setting frame size
-        frame2.add(panel2, BorderLayout.CENTER); //adding panel to frame
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //closes frame if user clicks X in corner
-        frame2.setTitle("Flashcards");
-
-        panel2.setBackground(Color.PINK); //panel color
-        panel2.setLayout(null);// look into this
-
-        questionLabel = new JLabel("Question:");
-        questionLabel.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        questionLabel.setForeground(Color.WHITE); // Font text color
-        questionLabel.setBackground(Color.PINK); //Font background color
-        questionLabel.setOpaque(true); // setting color
-        questionLabel.setBounds(60, 50, 100, 20); //placing of title
-        panel2.add(questionLabel); //adding to panel
-
-        questionInput = new JTextField(); // size of text area
-        questionInput.setBackground(Color.white);
-        questionInput.setFont(new Font("TimesRoman", Font.PLAIN, 12));
-        questionInput.setBounds(60, 80, 700, 150);
-        panel2.add(questionInput);
+    private FlashcardModel model;
 
 
-        answerLabel = new JLabel("Answer:");
-        answerLabel.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        answerLabel.setForeground(Color.WHITE); // Font text color
-        answerLabel.setBackground(Color.PINK); //Font background color
-        answerLabel.setOpaque(true); // setting color
-        answerLabel.setBounds(60, 270, 100, 20); //placing of title
-        panel2.add(answerLabel); //adding to panel
+    public CreateFlashcardDisplay(JPanel container, CardLayout cardLayout, FlashcardModel model) {
+        this.model = model; // sets up UI to create the cards, container, and the model to store the cards
 
-        answerInput = new JTextField(); // size of text area
-        answerInput.setFont(new Font("TimesRoman", Font.PLAIN, 12));
-        answerInput.setBounds(60, 300, 700, 150 );
-        panel2.add(answerInput);
+        setLayout(new BorderLayout());
 
-        nextCard= new JButton("Next Card");
-        nextCard.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        nextCard.setBounds(60, 500, 100, 50);
-        nextCard.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        //Labels and Text Fields
+        JPanel inputPanel = new JPanel(null);
+        inputPanel.setPreferredSize(new Dimension(600, 200));
 
-            }
-        });
-        panel2.add(nextCard);
+        questionLabel = new JLabel("Question: ");
+        questionLabel.setBounds(50, 50, 100, 30);
+        inputPanel.add(questionLabel);
 
-        saveSet= new JButton("Save Set");
-        saveSet.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        saveSet.setBounds(600, 500, 100, 50);
-        nextCard.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        questionInput = new JTextField(); // field for question input
+        questionInput.setBounds(150, 50, 300, 30);
+        inputPanel.add(questionInput);
 
-            }
-        });
-        panel2.add(saveSet);
+        answerLabel = new JLabel("Answer: ");
+        answerLabel.setBounds(50, 100, 100, 30);
+        inputPanel.add(answerLabel);
 
-        status = new JLabel(" ", JLabel.CENTER);
-        panel2.add(status, BorderLayout.NORTH);
+        answerInput = new JTextField(); // field for answer input
+        answerInput.setBounds(150, 100, 300, 30);
+        inputPanel.add(answerInput);
 
+        add(inputPanel, BorderLayout.CENTER);
 
+        //Button Panel
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
 
-        frame2.setVisible(true);
+        //Buttons that will be added to the Button Panel
+        JButton saveButton  = new JButton("Save Card");
+        JButton homeButton  = new JButton("Return Home");
+
+        // Save card action- adds the card to the model
+        saveButton.addActionListener(e -> saveFlashcard());
+        // Return home action
+        homeButton.addActionListener(e -> cardLayout.show(container, "Home"));
+
+        buttonPanel.add(saveButton); //adding buttons to button panel
+        buttonPanel.add(homeButton);
+
+        // Status label to show messages to user
+        status = new JLabel(" ", SwingConstants.CENTER);
+        add(status, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.SOUTH);
     }
-    //add method
-    public void addFlashcard(){
-        String question = questionInput.getText();
-        String answer = answerInput.getText();
 
-        if (question.isEmpty() || answer.isEmpty()){
-            status.setText("Enter question and answer.");
-        }else {
-            FlashCard flashcard = new FlashCard(question, answer);
-            flashCards.add(flashcard);
-            status.setText("Flashcard successfully added");
-            questionInput.setText(" ");
-            answerInput.setText(" ");
+
+    private void saveFlashcard() { // saves flashcard to the model
+        //getting text from text fields
+        String question = questionInput.getText().trim();
+        String answer = answerInput.getText().trim();
+
+        if (question.isEmpty() || answer.isEmpty()) { // checks if field is empty
+            status.setText("Enter question and answer"); //lets you know if its empty
+        } else {
+            model.addFlashcard(question, answer); //adding question and answer to model
+            status.setText("Flashcard added!"); // lets you know when flashcard is added
+            questionInput.setText("");
+            answerInput.setText("");
         }
     }
-    //show answer
 }
+

@@ -1,13 +1,20 @@
 package Model;
 
 /*
+Source:
 https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Javas-JOptionPane-showOptionDialog-by-Example
  */
 
 import javax.swing.*;
 import java.awt.*;
 
-// Prompts the user to select between starting a new session or start a break
+/**
+ * BreakDialog shows a dialog asking the user to select between starting a break or starting a new session
+ * after a Work session is completed. Returns true if the user chooses "Start Break".
+ *
+ * author: Domenica
+ */
+
 public class BreakDialog {
     public static boolean askUserForBreak(Component parent){
         String[] options = {"Start Break", "Start New Session"};

@@ -6,6 +6,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * LongBreakPanelGUI is an Observer panel for the long break session.
+ * It displays the remaining long break time and a button to start the long break.
+ *
+ * author: Domenica
+ */
+
 public class LongBreakPanelGUI extends JPanel implements Observer{
     private JLabel timerLabelLB;
     private JButton startButtonLB;

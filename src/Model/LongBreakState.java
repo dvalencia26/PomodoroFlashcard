@@ -1,6 +1,6 @@
 package Model;
 
-/*
+/**
 LongBreakState represents the state during a long break session.
 After completing 4 work session (Pomodoros), the user is set to this state to have a longer break
  */

@@ -1,15 +1,23 @@
 package Model;
-
+/*
+Sources:
+Create Beep Sound in Java
+https://java-demos.blogspot.com/2012/11/create-beep-sound-in-java.html
+ */
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 
-/*
-Create Beep Sound in Java
-https://java-demos.blogspot.com/2012/11/create-beep-sound-in-java.html
+/**
+ * CountDownTimer is responsible for handling the countdown logic for the Pomodoro App.
+ * Using a Swing Timer to count down the specified duration (in minutes).
+ * When the timer reaches zero, uses PomodoroApp to notify observers that time is up.
+ *
+ * Author: Domenica
  */
+
 public class CountDownTimer  {
 
     private int seconds; // Remaining time in seconds

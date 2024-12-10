@@ -1,7 +1,10 @@
 package Model;
 
-/*
-ShortBreakState represents the state during a short break session
+/**
+ * ShortBreakState represents the state during a short break session.
+ * The timer runs for a short break duration, and when completed, transitions back to WorkState.
+ *
+ * author:domenica
  */
 public class ShortBreakState extends PomodoroState{
 

@@ -1,24 +1,28 @@
-package Model;/*
+package View;/*
 Video Reference: https://www.youtube.com/watch?v=dsG58DA6Q0I&list=LL&index=1&t=1725s
  */
-// Pushing to main 2
+import Model.Observer;
+import Model.PomodoroApp;
+
 import javax.swing.*;
-import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
-This is the WorkSession Panel
+/**
+ * PomodoroGUI is an Observer that displays the current timer state to the user.
+ * It shows the remaining time and provides buttons to start, pause, and reset the timer.
+ * It observes changes from PomodoroApp (the Subject).
+ *
+ * author: Domenica
  */
-public class PomodoroGUI extends JPanel implements Observer{
-    private  PomodoroApp  pomodoroApp;
+
+public class PomodoroGUI extends JPanel implements Observer {
     private JLabel timerLabel;
     private JButton startButton, pauseButton, resetButton;
 
 
     public PomodoroGUI(PomodoroApp pomodoroApp) {
-        this.pomodoroApp = pomodoroApp;
         pomodoroApp.addObserver(this); // Adds Pomodoro GUI to observers list
         setLayout(new BorderLayout());
 

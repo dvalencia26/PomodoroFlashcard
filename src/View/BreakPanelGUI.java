@@ -5,11 +5,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * BreakPanelGUI is an Observer panel that displays time during a break session.
+ * It shows a "Start" button to begin the break. When the break ends, the session returns to work state.
+ *
+ * author: Domenica
+ */
 public class BreakPanelGUI extends JPanel implements Observer {
 
     private JLabel timerLabelBreak;
     private JButton startButton;
-    private PomodoroApp pomodoroApp;
 
     public BreakPanelGUI(PomodoroApp pomodoroApp) {
         pomodoroApp.addObserver(this);

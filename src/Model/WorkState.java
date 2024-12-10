@@ -1,11 +1,15 @@
 package Model;
 
-/*
-Uses a reference of pomodoroApp that calls the startTimer from the CountDownTimer
-to start the Work Timer in the GUI
+/**
+ * WorkState represents the Pomodoro state during a working session.
+ * This state will start the work timer. When the timer reaches zero,
+ * the session is marked as completed (incrementing the Pomodoros counter).
+ *
+ * author: Domenica
  */
 public class WorkState extends PomodoroState {
 
+    // Uses a reference of pomodoroApp that calls the startTimer from the CountDownTimer
     public WorkState(PomodoroApp pomodoroApp){
         super(pomodoroApp);
     }
