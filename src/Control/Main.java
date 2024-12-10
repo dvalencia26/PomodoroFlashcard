@@ -5,7 +5,7 @@ import View.DisplayHome;
 
 public class Main {
     public static void main(String[] args){
-        new DisplayHome();
-    }
+        DisplayHome displayHome = new DisplayHome();
+        displayHome.setVisible(true);    }
 
 }
